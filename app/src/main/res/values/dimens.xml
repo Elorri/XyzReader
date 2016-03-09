@@ -5,5 +5,5 @@
 
 
     <!-- element that can be overriden -->
-    <integer name="list_column_count">2</integer>
+    <integer name="list_column_count">1</integer>
 </resources>
