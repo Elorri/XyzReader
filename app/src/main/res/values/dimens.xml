@@ -6,4 +6,5 @@
 
     <!-- element that can be overriden -->
     <integer name="list_column_count">1</integer>
+    <bool name="wide_device">false</bool>
 </resources>
