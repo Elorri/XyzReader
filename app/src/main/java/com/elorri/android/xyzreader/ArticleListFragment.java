@@ -3,8 +3,8 @@ package com.elorri.android.xyzreader;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,7 +21,10 @@ public class ArticleListFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_article_list, container, false);
 
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recyclerview);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        int columnCount = getResources().getInteger(R.integer.list_column_count);
+        //recyclerView.setLayoutManager(new GridLayoutManager(getContext(), columnCount));
+        recyclerView.setLayoutManager(new StaggeredGridLayoutManager(columnCount, StaggeredGridLayoutManager.VERTICAL));
+
         Adapter adapter = new Adapter();
         recyclerView.setAdapter(adapter);
         return view;
@@ -38,7 +41,7 @@ public class ArticleListFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(ViewHolder holder, int position) {
-            holder.text.setText("Bacon ipsum dolor amet pork belly meatball kevin spare ribs. Frankfurter swine corned beef meatloaf, strip steak.");
+            holder.text.setText("A");
         }
 
         @Override
