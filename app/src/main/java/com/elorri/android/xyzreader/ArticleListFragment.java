@@ -38,10 +38,15 @@ public class ArticleListFragment extends Fragment {
         @Override
         public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View view = getLayoutInflater(null).inflate(R.layout.list_item_article, parent, false);
-            final Bundle bundle= ActivityOptions.makeSceneTransitionAnimation(getActivity()).toBundle();
+
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onClick(View view) {
+                    final Bundle bundle= ActivityOptions.makeSceneTransitionAnimation(
+                            getActivity(),
+                            view,
+                            getResources().getString(R.string.keep))
+                            .toBundle();
                     getActivity().startActivity(
                             new Intent(getContext(), ArticleDetailActivity.class),
                             bundle);

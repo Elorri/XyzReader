@@ -22,7 +22,12 @@
 
     <style name="AppTheme.Details">
         <item name="android:windowEnterTransition">@transition/slide_right</item>
+
+        <!-- note this apply to the activity disapearing ie ArticleListActivity -->
         <item name="android:windowTransitionBackgroundFadeDuration">900</item>
+
+        <!-- this line does not work with my device, I have to do it manually in the activity -->
+        <!--<item name="android:windowSharedElementEnterTransition">@transition/keep</item>-->
     </style>
 
 </resources>
