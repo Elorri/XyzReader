@@ -1,5 +1,6 @@
 package com.elorri.android.xyzreader;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -37,11 +38,13 @@ public class ArticleListFragment extends Fragment {
         @Override
         public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View view = getLayoutInflater(null).inflate(R.layout.list_item_article, parent, false);
+            final Bundle bundle= ActivityOptions.makeSceneTransitionAnimation(getActivity()).toBundle();
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    getActivity().startActivity(new Intent(getContext(), ArticleDetailActivity
-                            .class));
+                    getActivity().startActivity(
+                            new Intent(getContext(), ArticleDetailActivity.class),
+                            bundle);
                 }
             });
             final ViewHolder viewHolder = new ViewHolder(view);

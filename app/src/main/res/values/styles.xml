@@ -18,6 +18,7 @@
 
     <style name="AppTheme.Home">
         <item name="android:windowEnterTransition">@transition/grid_enter</item>
+        <item name="android:windowExitTransition">@transition/grid_exit</item>
     </style>
 
 </resources>
