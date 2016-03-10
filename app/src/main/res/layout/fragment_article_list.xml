@@ -4,9 +4,12 @@
              android:layout_height="match_parent"
              android:orientation="vertical">
 
-    <android.support.v7.widget.RecyclerView
+    <com.elorri.android.xyzreader.AutofitRecyclerView
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/recyclerview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:columnWidth="150dp"
+        android:clipToPadding="false"/>
 
 </FrameLayout>

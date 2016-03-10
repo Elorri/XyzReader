@@ -22,6 +22,7 @@
     <dimen name="spacing_xxlarge">60dp</dimen>
     <dimen name="spacing_xxxlarge">90dp</dimen>
     <dimen name="spacing_xxxxlarge">120dp</dimen>
+    <dimen name="recycleview_item_margin">2dp</dimen>
 
 
     <!-- spacing multiplier -->
@@ -39,7 +40,7 @@
     <dimen name="fab_width_height">56dp</dimen>
 
 
+
     <!-- element that can be overriden -->
-    <integer name="list_column_count">1</integer>
     <bool name="wide_device">false</bool>
 </resources>
