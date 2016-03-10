@@ -15,4 +15,9 @@
         <item name="popupTheme">@style/ThemeOverlay.AppCompat.Dark</item>
     </style>
 
+
+    <style name="AppTheme.Home">
+        <item name="android:windowEnterTransition">@transition/grid_enter</item>
+    </style>
+
 </resources>
