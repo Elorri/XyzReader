@@ -22,4 +22,19 @@
             android:text="a long text"/>
     </ScrollView>
 
+    <ImageButton
+        android:id="@+id/share_fab"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@drawable/oval_ripple"
+        android:contentDescription="@string/action_share"
+        android:elevation="6dp"
+        android:src="@drawable/ic_share_white_24dp"
+        android:stateListAnimator="@anim/fab_raise"
+        android:visibility="invisible"/>
+
 </RelativeLayout>

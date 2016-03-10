@@ -11,6 +11,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 
 /**
  * Created by Elorri on 09/03/2016.
@@ -31,10 +32,16 @@ public class ArticleDetailFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_article_detail, container, false);
-        if (getResources().getBoolean(R.bool.wide_device)) {
-            //nothing
-        } else {
-            //set fab visible}
+        if (!getResources().getBoolean(R.bool.wide_device)) {
+            ImageButton shareFab = (ImageButton) view.findViewById(R.id.share_fab);
+            shareFab.setVisibility(View.VISIBLE);
+            shareFab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    startActivity(Intent.createChooser(createShareIntent(),
+                            getString(R.string.action_share)));
+                }
+            });
         }
         return view;
     }
