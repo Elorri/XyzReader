@@ -19,7 +19,8 @@
 
         <activity
             android:name=".ArticleDetailActivity"
-            android:parentActivityName=".ArticleListActivity">
+            android:parentActivityName=".ArticleListActivity"
+            android:theme="@style/AppTheme.Details">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
