@@ -3,8 +3,12 @@ package com.elorri.android.xyzreader;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.ShareCompat;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -32,8 +36,39 @@ public class ArticleDetailFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_article_detail, container, false);
+
+        final CollapsingToolbarLayout collapsingToolbar =
+                (CollapsingToolbarLayout) view.findViewById(R.id.collapsing_toolbar_layout);
+        collapsingToolbar.setTitle("");
+
+        AppBarLayout appBarLayout = (AppBarLayout) view.findViewById(R.id.app_bar_layout);
+        appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
+            boolean isCollapsed = false;
+            int scrollRange = -1;
+
+            @Override
+            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+                if (scrollRange == -1) {
+                    scrollRange = appBarLayout.getTotalScrollRange();
+                }
+                if (scrollRange + verticalOffset == 0) {
+                    collapsingToolbar.setTitle("A title");
+                    isCollapsed = true;
+                } else if (isCollapsed) {
+                    collapsingToolbar.setTitle("");
+                    isCollapsed = false;
+                }
+            }
+        });
+
         if (!getResources().getBoolean(R.bool.wide_device)) {
-            ImageButton shareFab = (ImageButton) view.findViewById(R.id.share_fab);
+            Toolbar toolbar = (Toolbar) view.findViewById(R.id.app_bar);
+            ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
+            ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowTitleEnabled(false);
+            ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
+           ImageButton shareFab = (ImageButton) view.findViewById(R.id.share_fab);
             shareFab.setVisibility(View.VISIBLE);
             shareFab.setOnClickListener(new View.OnClickListener() {
                 @Override

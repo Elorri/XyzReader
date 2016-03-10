@@ -17,6 +17,7 @@ public class  ArticleDetailActivity extends AppCompatActivity {
         if(getResources().getBoolean(R.bool.wide_device)) {
             Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
             setSupportActionBar(toolbar);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             setTitle("");
         }
     }
