@@ -1,13 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"    >
-    <TextView
-        android:id="@+id/text"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:background="@android:color/holo_red_light"
-        android:gravity="center"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tool="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:focusable="true"
+    android:padding="@dimen/spacing_xsmall"
+    tool:foreground="?selectableItemBackground">
+
+    <ImageView
+        android:id="@+id/thumbnail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/coconut"
+        android:scaleType="centerCrop"
         android:transitionName="@string/keep"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/article_title"
+            style="@style/ArticleTitle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:ellipsize="end"
+            android:gravity="top|left"
+            android:maxLines="4"
+            android:padding="@dimen/spacing_small"
+            tool:text="An Empire State Of Mind"/>
+
+        <TextView
+            android:id="@+id/article_subtitle"
+            style="@style/ArticleSubtitle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:ellipsize="end"
+            android:gravity="bottom|right"
+            android:maxLines="1"
+            android:padding="@dimen/spacing_small"
+            android:singleLine="true"
+            tool:text="19 juin 2013 by Edison"/>
+    </RelativeLayout>
 
 </FrameLayout>
