@@ -18,6 +18,7 @@ public class ArticleListActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.e("XyzReader",Thread.currentThread().getStackTrace()[2]+"");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_article_list);
 

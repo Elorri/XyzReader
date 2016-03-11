@@ -10,6 +10,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.net.Uri;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,8 +49,10 @@ public class ItemsProvider extends ContentProvider {
         final int match = sUriMatcher.match(uri);
         switch (match) {
             case ITEMS:
+                Log.e("XyzReader",Thread.currentThread().getStackTrace()[2]+" uri ITEMS "+uri);
                 return ItemsContract.Items.CONTENT_TYPE;
             case ITEMS__ID:
+                Log.e("XyzReader",Thread.currentThread().getStackTrace()[2]+" uri ITEMS__ID "+uri);
                 return ItemsContract.Items.CONTENT_ITEM_TYPE;
             default:
                 throw new UnsupportedOperationException("Unknown uri: " + uri);

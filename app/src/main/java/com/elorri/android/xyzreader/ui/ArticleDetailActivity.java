@@ -3,6 +3,7 @@ package com.elorri.android.xyzreader.ui;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 
 import com.elorri.android.xyzreader.R;
 
@@ -13,6 +14,7 @@ public class  ArticleDetailActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.e("XyzReader", Thread.currentThread().getStackTrace()[2] + "");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_article_detail);
 
@@ -21,6 +23,20 @@ public class  ArticleDetailActivity extends AppCompatActivity {
             setSupportActionBar(toolbar);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             setTitle("");
+        }
+
+
+        if (savedInstanceState == null) {
+            Log.e("XyzReader",Thread.currentThread().getStackTrace()[2]+"");
+            Bundle arguments = new Bundle();
+            arguments.putParcelable(ArticleDetailFragment.DETAIL_URI, getIntent().getData());
+
+            ArticleDetailFragment fragment = new ArticleDetailFragment();
+            fragment.setArguments(arguments);
+
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.detail_fragment_container, fragment)
+                    .commit();
         }
     }
 }

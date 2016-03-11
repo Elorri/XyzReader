@@ -56,7 +56,7 @@ public class ArticleListFragment extends Fragment implements LoaderManager.Loade
 
 
     @Override
-    public void onResume() {
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         getLoaderManager().initLoader(XYZ_LOADER, null, this);
         super.onResume();
     }
