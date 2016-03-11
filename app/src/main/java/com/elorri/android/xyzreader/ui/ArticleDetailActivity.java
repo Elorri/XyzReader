@@ -1,8 +1,10 @@
-package com.elorri.android.xyzreader;
+package com.elorri.android.xyzreader.ui;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+
+import com.elorri.android.xyzreader.R;
 
 /**
  * Created by Elorri on 09/03/2016.

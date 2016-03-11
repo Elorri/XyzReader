@@ -1,4 +1,4 @@
-package com.elorri.android.xyzreader;
+package com.elorri.android.xyzreader.ui;
 
 import android.content.Context;
 import android.content.res.TypedArray;

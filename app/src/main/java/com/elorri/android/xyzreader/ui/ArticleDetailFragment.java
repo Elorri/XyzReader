@@ -1,4 +1,4 @@
-package com.elorri.android.xyzreader;
+package com.elorri.android.xyzreader.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,6 +16,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+
+import com.elorri.android.xyzreader.R;
 
 /**
  * Created by Elorri on 09/03/2016.

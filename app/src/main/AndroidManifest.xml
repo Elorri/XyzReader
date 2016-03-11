@@ -2,6 +2,10 @@
 <manifest package="com.elorri.android.xyzreader"
           xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.BROADCAST_STICKY" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ArticleListActivity"
+            android:name=".ui.ArticleListActivity"
             android:theme="@style/AppTheme.Home">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -18,8 +22,8 @@
         </activity>
 
         <activity
-            android:name=".ArticleDetailActivity"
-            android:parentActivityName=".ArticleListActivity"
+            android:name=".ui.ArticleDetailActivity"
+            android:parentActivityName=".ui.ArticleListActivity"
             android:theme="@style/AppTheme.Details">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -27,8 +31,16 @@
             </intent-filter>
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ArticleListActivity" />
+                android:value=".ui.ArticleListActivity" />
         </activity>
+
+        <service android:name=".data.UpdaterService"
+                 android:exported="false" />
+
+        <provider android:name=".data.ItemsProvider"
+                  android:authorities="com.elorri.android.xyzreader"
+                  android:exported="false" />
+
     </application>
 
 </manifest>

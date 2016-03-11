@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ArticleListActivity">
+    tools:context=".ui.ArticleListActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
@@ -24,7 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/toolbar"
-        android:name="com.elorri.android.xyzreader.ArticleListFragment"
+        android:name="com.elorri.android.xyzreader.ui.ArticleListFragment"
         tools:layout="@layout/fragment_article_list"/>
 
 </RelativeLayout>

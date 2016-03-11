@@ -33,7 +33,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/space"
-        android:name="com.elorri.android.xyzreader.ArticleDetailFragment"
+        android:name="com.elorri.android.xyzreader.ui.ArticleDetailFragment"
         tools:layout="@layout/fragment_article_detail"
         android:layout_marginRight="72dp"
         android:layout_marginLeft="72dp"/>

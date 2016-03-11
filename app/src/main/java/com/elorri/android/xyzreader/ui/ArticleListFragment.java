@@ -1,4 +1,4 @@
-package com.elorri.android.xyzreader;
+package com.elorri.android.xyzreader.ui;
 
 import android.app.ActivityOptions;
 import android.content.Context;
@@ -7,16 +7,21 @@ import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.elorri.android.xyzreader.R;
+
 /**
  * Created by Elorri on 09/03/2016.
  */
 public class ArticleListFragment extends Fragment {
+
+    private SwipeRefreshLayout mSwipeRefreshLayout;
 
     @Nullable
     @Override
@@ -28,8 +33,16 @@ public class ArticleListFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         Adapter adapter = new Adapter();
         recyclerView.setAdapter(adapter);
+
+        mSwipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipe_refresh_layout);
+
         return view;
 
+    }
+
+    public void updateRefreshingUI(boolean mIsRefreshing) {
+        //will refresh the recyclerview
+        mSwipeRefreshLayout.setRefreshing(mIsRefreshing);
     }
 
     private class Adapter extends RecyclerView.Adapter<ViewHolder> {
