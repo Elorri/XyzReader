@@ -9,7 +9,7 @@
     android:padding="@dimen/spacing_xsmall"
     tool:foreground="?selectableItemBackground">
 
-    <com.elorri.android.xyzreader.ui.GradientTopBottomImageView
+    <com.elorri.android.xyzreader.ui.DynamicHeightGradientTopBottomImageView
         android:id="@+id/thumbnail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

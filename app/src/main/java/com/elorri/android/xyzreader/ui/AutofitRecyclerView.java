@@ -50,7 +50,7 @@ public class AutofitRecyclerView extends RecyclerView {
         super.onMeasure(widthSpec, heightSpec);
         if (columnWidth > 0) {
             //take the value from getMeasuredWidth to compute the span count
-            //makes sure that we will have at least a span count of 1 with Math.max
+            //makes sure that we will have at least a span count of 2 with Math.max
             //note : a column width of 72dp will make a span count of 4 (320dp / 72dp = 4.4444)
             // that will items 320dp / 4 = 80dp wide, not 72dp
             int spanCount = Math.max(2, getMeasuredWidth() / columnWidth);

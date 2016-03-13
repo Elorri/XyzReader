@@ -144,13 +144,13 @@ public class ArticleListFragment extends Fragment implements LoaderManager.Loade
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        public GradientTopBottomImageView thumbnailView;
+        public DynamicHeightGradientTopBottomImageView thumbnailView;
         public TextView titleView;
         public TextView subtitleView;
 
         public ViewHolder(View view) {
             super(view);
-            thumbnailView = (GradientTopBottomImageView) view.findViewById(R.id.thumbnail);
+            thumbnailView = (DynamicHeightGradientTopBottomImageView) view.findViewById(R.id.thumbnail);
             titleView = (TextView) view.findViewById(R.id.article_title);
             subtitleView = (TextView) view.findViewById(R.id.article_subtitle);
         }

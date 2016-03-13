@@ -42,6 +42,7 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
     private View mRootView;
     private Cursor mCursor;
     private String mArticleTitle;
+    private CollapsingToolbarLayout mCollapsingToolbar;
 
 
     public ArticleDetailFragment() {
@@ -62,9 +63,9 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
         Log.e("XyzReader", Thread.currentThread().getStackTrace()[2] + "");
         mRootView = inflater.inflate(R.layout.fragment_article_detail, container, false);
 
-        final CollapsingToolbarLayout collapsingToolbar =
+        mCollapsingToolbar =
                 (CollapsingToolbarLayout) mRootView.findViewById(R.id.collapsing_toolbar_layout);
-        collapsingToolbar.setTitle("");
+        mCollapsingToolbar.setTitle("");
 
         AppBarLayout appBarLayout = (AppBarLayout) mRootView.findViewById(R.id.app_bar_layout);
         appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
@@ -77,10 +78,10 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
                     scrollRange = appBarLayout.getTotalScrollRange();
                 }
                 if (scrollRange + verticalOffset == 0) {
-                    collapsingToolbar.setTitle(mArticleTitle);
+                    mCollapsingToolbar.setTitle(mArticleTitle);
                     isCollapsed = true;
                 } else if (isCollapsed) {
-                    collapsingToolbar.setTitle("");
+                    mCollapsingToolbar.setTitle("");
                     isCollapsed = false;
                 }
             }
@@ -219,6 +220,7 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
 //
 //                                mRootView.findViewById(R.id.meta_bar).setBackgroundColor(mMutedColor);
 //                                mCollapsingToolbar.setContentScrimColor(mMutedColor);
+            mCollapsingToolbar.setContentScrimColor(getResources().getColor(R.color.accent));
 //                            }
 //                        }
 //
