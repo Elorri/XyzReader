@@ -19,7 +19,7 @@
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
 
-            <ImageView
+            <com.elorri.android.xyzreader.ui.GradientTopImageView
                 android:id="@+id/photo"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
