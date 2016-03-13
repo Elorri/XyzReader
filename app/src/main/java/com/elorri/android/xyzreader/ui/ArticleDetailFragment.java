@@ -175,7 +175,7 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
 
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {
-        Log.e("XyzReader",Thread.currentThread().getStackTrace()[2]+"");
+        Log.e("XyzReader", Thread.currentThread().getStackTrace()[2] + "");
         bindViews();
     }
 
@@ -184,11 +184,13 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
             return;
         }
 
-        Log.e("XyzReader",Thread.currentThread().getStackTrace()[2]+"");
+        Log.e("XyzReader", Thread.currentThread().getStackTrace()[2] + "");
         TextView titleView = (TextView) mRootView.findViewById(R.id.article_title);
         TextView bylineView = (TextView) mRootView.findViewById(R.id.article_byline);
         bylineView.setMovementMethod(new LinkMovementMethod());
         TextView bodyView = (TextView) mRootView.findViewById(R.id.article_body);
+        DynamicHeightGradientTopBottomImageView photo = (DynamicHeightGradientTopBottomImageView) mRootView.findViewById(R.id
+                .photo);
 
         if (mCursor != null) {
             Log.e("XyzReader",Thread.currentThread().getStackTrace()[2]+"");
@@ -206,6 +208,7 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
                             + mCursor.getString(ArticleLoader.Query.AUTHOR)
                             + "</font>"));
             bodyView.setText(Html.fromHtml(mCursor.getString(ArticleLoader.Query.BODY)));
+
 //            ImageLoaderHelper.getInstance(getActivity()).getImageLoader()
 //                    .get(mCursor.getString(ArticleLoader.Query.PHOTO_URL), new ImageLoader.ImageListener() {
 //                        @Override
@@ -214,8 +217,8 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
 //                            if (bitmap != null) {
 //                                Palette p = Palette.generate(bitmap, 12);
 //                                mMutedColor = p.getDarkMutedColor(0xFF333333);
-//
-//                                mPhotoView.setImageBitmap(imageContainer.getBitmap());
+
+//                                mPhotoView.setBitmap(imageContainer.getBitmap());
 //                                mPhotoView.setAspectRatio(mCursor.getFloat(ArticleLoader.Query.ASPECT_RATIO));
 //
 //                                mRootView.findViewById(R.id.meta_bar).setBackgroundColor(mMutedColor);
