@@ -13,6 +13,7 @@ import android.support.v4.app.LoaderManager;
 import android.support.v4.app.ShareCompat;
 import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.graphics.Palette;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.text.format.DateUtils;
@@ -213,8 +214,7 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
                             + "</font>"));
             bodyView.setText(Html.fromHtml(mCursor.getString(ArticleLoader.Query.BODY)));
 
-            mPhotoView.setAspectRatio(mCursor.getFloat(ArticleLoader.Query.ASPECT_RATIO));
-            mCollapsingToolbar.setContentScrimColor(getResources().getColor(R.color.accent));
+
 
             String url=mCursor.getString(ArticleLoader.Query.PHOTO_URL);
             ImageLoaderHelper.getInstance(getContext()).getImageLoader()
@@ -224,14 +224,13 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
                             Bitmap bitmap = imageContainer.getBitmap();
                             Log.e("Xyzreader", Thread.currentThread().getStackTrace()[2] + "");
                             if (bitmap != null) {
-//                                Palette p = Palette.generate(bitmap, 12);
-//                                mMutedColor = p.getDarkMutedColor(0xFF333333);
+                                Palette p = Palette.generate(bitmap, 12);
+                                int mutedColor = p.getDarkMutedColor(0xFF333333);
                                 Log.e("Xyzreader", Thread.currentThread().getStackTrace()[2] + "");
                                 mPhotoView.setImage(imageContainer.getBitmap());
-//                                mPhotoView.setAspectRatio(mCursor.getFloat(ArticleLoader.Query.ASPECT_RATIO));
-//                                mRootView.findViewById(R.id.meta_bar).setBackgroundColor(mMutedColor);
-//                                mCollapsingToolbar.setContentScrimColor(mMutedColor);
-//            mCollapsingToolbar.setContentScrimColor(getResources().getColor(R.color.accent));
+                                mPhotoView.setAspectRatio(mCursor.getFloat(ArticleLoader.Query.ASPECT_RATIO));
+                                mRootView.findViewById(R.id.meta_bar).setBackgroundColor(mutedColor);
+                                mCollapsingToolbar.setContentScrimColor(mutedColor);
                             }
                         }
 
