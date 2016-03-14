@@ -43,6 +43,7 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
     private Cursor mCursor;
     private String mArticleTitle;
     private CollapsingToolbarLayout mCollapsingToolbar;
+    private DynamicHeightGradientTopImageView mPhotoView;
 
 
     public ArticleDetailFragment() {
@@ -189,7 +190,7 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
         TextView bylineView = (TextView) mRootView.findViewById(R.id.article_byline);
         bylineView.setMovementMethod(new LinkMovementMethod());
         TextView bodyView = (TextView) mRootView.findViewById(R.id.article_body);
-        DynamicHeightGradientTopBottomImageView photo = (DynamicHeightGradientTopBottomImageView) mRootView.findViewById(R.id
+        mPhotoView = (DynamicHeightGradientTopImageView) mRootView.findViewById(R.id
                 .photo);
 
         if (mCursor != null) {
@@ -209,34 +210,16 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
                             + "</font>"));
             bodyView.setText(Html.fromHtml(mCursor.getString(ArticleLoader.Query.BODY)));
 
-//            ImageLoaderHelper.getInstance(getActivity()).getImageLoader()
-//                    .get(mCursor.getString(ArticleLoader.Query.PHOTO_URL), new ImageLoader.ImageListener() {
-//                        @Override
-//                        public void onResponse(ImageLoader.ImageContainer imageContainer, boolean b) {
-//                            Bitmap bitmap = imageContainer.getBitmap();
-//                            if (bitmap != null) {
-//                                Palette p = Palette.generate(bitmap, 12);
-//                                mMutedColor = p.getDarkMutedColor(0xFF333333);
-
-//                                mPhotoView.setBitmap(imageContainer.getBitmap());
-//                                mPhotoView.setAspectRatio(mCursor.getFloat(ArticleLoader.Query.ASPECT_RATIO));
-//
-//                                mRootView.findViewById(R.id.meta_bar).setBackgroundColor(mMutedColor);
-//                                mCollapsingToolbar.setContentScrimColor(mMutedColor);
+            mPhotoView.setAspectRatio(mCursor.getFloat(ArticleLoader.Query.ASPECT_RATIO));
             mCollapsingToolbar.setContentScrimColor(getResources().getColor(R.color.accent));
-//                            }
-//                        }
-//
-//                        @Override
-//                        public void onErrorResponse(VolleyError volleyError) {
-//
-//                        }
-//                    });
+
+            mPhotoView.setImage(mCursor.getString(ArticleLoader.Query.PHOTO_URL));
+
         } else {
             Log.e("XyzReader",Thread.currentThread().getStackTrace()[2]+"");
             mRootView.setVisibility(View.GONE);
             titleView.setText("N/A");
-            bylineView.setText("N/A" );
+            bylineView.setText("N/A");
             bodyView.setText("N/A");
         }
 

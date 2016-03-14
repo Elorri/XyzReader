@@ -3,6 +3,7 @@ package com.elorri.android.xyzreader.ui;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
@@ -23,14 +24,22 @@ public class DynamicHeightGradientTopBottomImageView extends FrameLayout {
 
     private void init() {
         inflate(getContext(), R.layout.top_bottom_gradient_imageview, this);
-        mThumbnailView = (NetworkImageView) findViewById(R.id.thumbnail);
+        FrameLayout thumbnail_container = (FrameLayout) findViewById(R.id.thumbnail_container);
+        mThumbnailView = new NetworkImageView(getContext());
+        thumbnail_container.addView(mThumbnailView);
     }
+
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         int measuredWidth = getMeasuredWidth();
         int measuredHeight = Math.max(300, (int) (measuredWidth / mAspectRatio));
+
+        mThumbnailView.getLayoutParams().width = measuredWidth;
+        mThumbnailView.getLayoutParams().height = measuredHeight;
+        mThumbnailView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+
         setMeasuredDimension(measuredWidth, measuredHeight);
     }
 

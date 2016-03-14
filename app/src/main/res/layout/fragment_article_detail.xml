@@ -22,7 +22,7 @@
             <com.elorri.android.xyzreader.ui.DynamicHeightGradientTopImageView
                 android:id="@+id/photo"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
+                android:layout_height="wrap_content"
                 android:transitionName="@string/keep"
                 app:layout_collapseMode="parallax"           />
 

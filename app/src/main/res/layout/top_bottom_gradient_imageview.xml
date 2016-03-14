@@ -4,12 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.android.volley.toolbox.NetworkImageView
-        android:id="@+id/thumbnail"
+    <FrameLayout
+        android:id="@+id/thumbnail_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/coconut"
-        android:scaleType="centerCrop"
         android:transitionName="@string/keep"/>
     <View
         android:layout_width="match_parent"

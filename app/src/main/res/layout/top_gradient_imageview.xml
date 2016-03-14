@@ -3,13 +3,10 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <ImageView
-        android:id="@+id/thumbnail"
+    <FrameLayout
+        android:id="@+id/thumbnail_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/coconut"
-        android:scaleType="centerCrop"
-        android:transitionName="@string/keep"/>
+        android:layout_height="match_parent"/>
     <View
         android:layout_width="match_parent"
         android:layout_height="match_parent"
