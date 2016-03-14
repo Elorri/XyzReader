@@ -4,9 +4,11 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.TextView;
 
 import com.elorri.android.xyzreader.R;
 import com.elorri.android.xyzreader.data.UpdaterService;
@@ -24,6 +26,11 @@ public class ArticleListActivity extends AppCompatActivity {
 
         mArticleListFragment=(ArticleListFragment)getSupportFragmentManager().findFragmentById(R.id
                 .activityListFragment);
+
+        Typeface courgette = Typeface.createFromAsset(getAssets(), "courgette-regular.ttf");
+        TextView appTitleXyz = (TextView) findViewById(R.id.appTitleXyz);
+        TextView appTitleReader = (TextView) findViewById(R.id.appTitleReader);
+        appTitleXyz.setTypeface(courgette);
 
         if (savedInstanceState == null) {
             refresh();

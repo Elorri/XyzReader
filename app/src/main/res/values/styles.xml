@@ -30,6 +30,17 @@
         <!--<item name="android:windowSharedElementEnterTransition">@transition/keep</item>-->
     </style>
 
+    <style name="AppTitleXyz" >
+        <item name="android:textColor">@color/material_white</item>
+        <item name="android:textSize">@dimen/text_size_xxxxlarge</item>
+    </style>
+
+    <style name="AppTitleReader">
+        <item name="android:textColor">@color/material_white</item>
+        <item name="android:textSize">@dimen/text_size_xxxlarge</item>
+        <item name="android:fontFamily">sans-serif-condensed</item>
+    </style>
+
 
     <style name="ArticleTitle">
         <item name="android:textColor">@color/material_white</item>

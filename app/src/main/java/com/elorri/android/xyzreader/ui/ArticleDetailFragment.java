@@ -233,6 +233,7 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
                                 mPhotoView.setAspectRatio(mCursor.getFloat(ArticleLoader.Query.ASPECT_RATIO));
                                 mRootView.findViewById(R.id.meta_bar).setBackgroundColor(mutedColor);
                                 mCollapsingToolbar.setContentScrimColor(mutedColor);
+
                             }
                         }
 

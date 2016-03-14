@@ -10,13 +10,31 @@
         android:id="@+id/toolbar"
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/app_name"
-            android:textColor="@android:color/white"
-            android:textSize="22sp"/>
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="@dimen/spacing_small"
+            android:contentDescription="@string/app_name">
+
+            <TextView
+                android:id="@+id/appTitleXyz"
+                style="@style/AppTitleXyz"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/app_name"
+                android:text="@string/xyz"/>
+            <TextView
+                android:id="@+id/appTitleReader"
+                style="@style/AppTitleReader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/appTitleXyz"
+                android:layout_toRightOf="@id/appTitleXyz"
+                android:paddingBottom="5sp"
+                android:paddingLeft="@dimen/spacing_xsmall"
+                android:text="@string/reader"/>
+        </RelativeLayout>
     </android.support.v7.widget.Toolbar>
 
     <fragment
