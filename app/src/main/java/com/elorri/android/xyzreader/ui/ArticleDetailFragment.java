@@ -2,6 +2,7 @@ package com.elorri.android.xyzreader.ui;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -26,6 +27,8 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.ImageLoader;
 import com.elorri.android.xyzreader.R;
 import com.elorri.android.xyzreader.data.ArticleLoader;
 import com.elorri.android.xyzreader.data.ItemsContract;
@@ -141,7 +144,7 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
 
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-        Log.e("XyzReader",Thread.currentThread().getStackTrace()[2]+"");
+        Log.e("XyzReader", Thread.currentThread().getStackTrace()[2] + "");
         Bundle arguments = getArguments();
         if (arguments != null) {
             mDetailUri = arguments.getParcelable(DETAIL_URI);
@@ -194,7 +197,7 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
                 .photo);
 
         if (mCursor != null) {
-            Log.e("XyzReader",Thread.currentThread().getStackTrace()[2]+"");
+            Log.e("XyzReader", Thread.currentThread().getStackTrace()[2] + "");
             mRootView.setAlpha(0);
             mRootView.setVisibility(View.VISIBLE);
             mRootView.animate().alpha(1);
@@ -213,7 +216,31 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
             mPhotoView.setAspectRatio(mCursor.getFloat(ArticleLoader.Query.ASPECT_RATIO));
             mCollapsingToolbar.setContentScrimColor(getResources().getColor(R.color.accent));
 
-            mPhotoView.setImage(mCursor.getString(ArticleLoader.Query.PHOTO_URL));
+            String url=mCursor.getString(ArticleLoader.Query.PHOTO_URL);
+            ImageLoaderHelper.getInstance(getContext()).getImageLoader()
+                    .get(url, new ImageLoader.ImageListener() {
+                        @Override
+                        public void onResponse(ImageLoader.ImageContainer imageContainer, boolean b) {
+                            Bitmap bitmap = imageContainer.getBitmap();
+                            Log.e("Xyzreader", Thread.currentThread().getStackTrace()[2] + "");
+                            if (bitmap != null) {
+//                                Palette p = Palette.generate(bitmap, 12);
+//                                mMutedColor = p.getDarkMutedColor(0xFF333333);
+                                Log.e("Xyzreader", Thread.currentThread().getStackTrace()[2] + "");
+                                mPhotoView.setImage(imageContainer.getBitmap());
+//                                mPhotoView.setAspectRatio(mCursor.getFloat(ArticleLoader.Query.ASPECT_RATIO));
+//                                mRootView.findViewById(R.id.meta_bar).setBackgroundColor(mMutedColor);
+//                                mCollapsingToolbar.setContentScrimColor(mMutedColor);
+//            mCollapsingToolbar.setContentScrimColor(getResources().getColor(R.color.accent));
+                            }
+                        }
+
+                        @Override
+                        public void onErrorResponse(VolleyError volleyError) {
+
+                        }
+                    });
+
 
         } else {
             Log.e("XyzReader",Thread.currentThread().getStackTrace()[2]+"");
@@ -224,4 +251,6 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
         }
 
     }
+
+
 }

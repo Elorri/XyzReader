@@ -7,8 +7,6 @@ import android.util.Log;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.ImageLoader;
 import com.elorri.android.xyzreader.R;
 
 /**
@@ -51,32 +49,8 @@ public class DynamicHeightGradientTopImageView extends FrameLayout {
     }
 
 
-    public void setImage(String url) {
-        ImageLoaderHelper.getInstance(getContext()).getImageLoader()
-                .get(url, new ImageLoader.ImageListener() {
-                    @Override
-                    public void onResponse(ImageLoader.ImageContainer imageContainer, boolean b) {
-                        Bitmap bitmap = imageContainer.getBitmap();
-                        Log.e("Xyzreader", Thread.currentThread().getStackTrace()[2]+"");
-                        if (bitmap != null) {
-//                                Palette p = Palette.generate(bitmap, 12);
-//                                mMutedColor = p.getDarkMutedColor(0xFF333333);
-                            Log.e("Xyzreader", Thread.currentThread().getStackTrace()[2]+"");
-                            mThumbnailView.setImageBitmap(imageContainer.getBitmap());
-//                                mPhotoView.setAspectRatio(mCursor.getFloat(ArticleLoader.Query.ASPECT_RATIO));
-//                                mRootView.findViewById(R.id.meta_bar).setBackgroundColor(mMutedColor);
-//                                mCollapsingToolbar.setContentScrimColor(mMutedColor);
-//            mCollapsingToolbar.setContentScrimColor(getResources().getColor(R.color.accent));
-                        }
-                    }
-
-                    @Override
-                    public void onErrorResponse(VolleyError volleyError) {
-
-                    }
-                });
-
-        requestLayout();
+    public void setImage(Bitmap bitmap) {
+        mThumbnailView.setImageBitmap(bitmap);
     }
 }
 
