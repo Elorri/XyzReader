@@ -9,7 +9,6 @@ import android.widget.ImageView;
 
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
-import com.android.volley.toolbox.NetworkImageView;
 import com.elorri.android.xyzreader.R;
 
 /**
@@ -18,7 +17,7 @@ import com.elorri.android.xyzreader.R;
 public class DynamicHeightGradientTopImageView extends FrameLayout {
 
     private float mAspectRatio=1.5f;
-    private NetworkImageView mThumbnailView;
+    private ImageView mThumbnailView;
 
     public DynamicHeightGradientTopImageView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -28,7 +27,7 @@ public class DynamicHeightGradientTopImageView extends FrameLayout {
     private void init() {
         inflate(getContext(), R.layout.top_gradient_imageview, this);
         FrameLayout thumbnail_container = (FrameLayout) findViewById(R.id.thumbnail_container);
-        mThumbnailView = new NetworkImageView(getContext());
+        mThumbnailView = new ImageView(getContext());
         thumbnail_container.addView(mThumbnailView);
     }
 
