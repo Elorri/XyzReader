@@ -43,4 +43,5 @@
 
     <!-- element that can be overriden -->
     <bool name="wide_device">false</bool>
+    <dimen name="layout_width">400dp</dimen>
 </resources>

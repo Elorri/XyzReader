@@ -24,16 +24,11 @@
         android:layout_height="?attr/actionBarSize"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
-
-
-
-
     <FrameLayout
         android:id="@+id/detail_fragment_container"
-        android:layout_width="match_parent"
+        android:layout_width="@dimen/layout_width"
         android:layout_height="match_parent"
         android:layout_below="@id/space"
         tools:layout="@layout/fragment_article_detail"
-        android:layout_marginRight="72dp"
-        android:layout_marginLeft="72dp"/>
+        android:layout_centerInParent="true"/>
 </RelativeLayout>
