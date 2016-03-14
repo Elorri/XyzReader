@@ -12,6 +12,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.app.ShareCompat;
 import android.support.v4.content.Loader;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.graphics.Palette;
 import android.support.v7.widget.Toolbar;
@@ -40,7 +41,7 @@ import com.elorri.android.xyzreader.data.ItemsContract;
 public class ArticleDetailFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
 
     private static final int XYZ_LOADER = 0;
-    public static String DETAIL_URI="detail_uri";
+    public static String DETAIL_URI = "detail_uri";
     private MenuItem mActivityMenuItem;
     private Uri mDetailUri;
     private View mRootView;
@@ -95,11 +96,11 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
         if (!getResources().getBoolean(R.bool.wide_device)) {
             Toolbar toolbar = (Toolbar) mRootView.findViewById(R.id.app_bar);
             ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
-            ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowTitleEnabled(false);
+            ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayShowTitleEnabled(false);
             ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
-           ImageButton shareFab = (ImageButton) mRootView.findViewById(R.id.share_fab);
+            ImageButton shareFab = (ImageButton) mRootView.findViewById(R.id.share_fab);
             shareFab.setVisibility(View.VISIBLE);
             shareFab.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -108,12 +109,14 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
                             getString(R.string.action_share)));
                 }
             });
+        } else {
+            NestedScrollView nestedscrollview =
+                    (NestedScrollView)mRootView.findViewById(R.id.nestedscrollview);
+            nestedscrollview.setBackgroundColor(getResources().getColor(R.color.material_white));
         }
-        Log.e("XyzReader",Thread.currentThread().getStackTrace()[2]+"");
+        Log.e("XyzReader", Thread.currentThread().getStackTrace()[2] + "");
         return mRootView;
     }
-
-
 
 
     @Override
@@ -150,8 +153,8 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
         if (arguments != null) {
             mDetailUri = arguments.getParcelable(DETAIL_URI);
             if (mDetailUri != null) {
-                Log.e("XyzReader",Thread.currentThread().getStackTrace()[2]+"");
-                long itemId= ItemsContract.Items.getItemId(mDetailUri);
+                Log.e("XyzReader", Thread.currentThread().getStackTrace()[2] + "");
+                long itemId = ItemsContract.Items.getItemId(mDetailUri);
                 return ArticleLoader.newInstanceForItemId(getActivity(), itemId);
             }
         }
@@ -160,7 +163,7 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
-        Log.e("XyzReader",Thread.currentThread().getStackTrace()[2]+"");
+        Log.e("XyzReader", Thread.currentThread().getStackTrace()[2] + "");
         if (!isAdded()) {
             if (data != null) {
                 data.close();
@@ -202,7 +205,7 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
             mRootView.setAlpha(0);
             mRootView.setVisibility(View.VISIBLE);
             mRootView.animate().alpha(1);
-            mArticleTitle =mCursor.getString(ArticleLoader.Query.TITLE);
+            mArticleTitle = mCursor.getString(ArticleLoader.Query.TITLE);
             titleView.setText(mArticleTitle);
             bylineView.setText(Html.fromHtml(
                     DateUtils.getRelativeTimeSpanString(
@@ -215,8 +218,7 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
             bodyView.setText(Html.fromHtml(mCursor.getString(ArticleLoader.Query.BODY)));
 
 
-
-            String url=mCursor.getString(ArticleLoader.Query.PHOTO_URL);
+            String url = mCursor.getString(ArticleLoader.Query.PHOTO_URL);
             ImageLoaderHelper.getInstance(getContext()).getImageLoader()
                     .get(url, new ImageLoader.ImageListener() {
                         @Override
@@ -242,7 +244,7 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
 
 
         } else {
-            Log.e("XyzReader",Thread.currentThread().getStackTrace()[2]+"");
+            Log.e("XyzReader", Thread.currentThread().getStackTrace()[2] + "");
             mRootView.setVisibility(View.GONE);
             titleView.setText("N/A");
             bylineView.setText("N/A");

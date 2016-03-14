@@ -22,7 +22,7 @@
     <dimen name="spacing_xxlarge">60dp</dimen>
     <dimen name="spacing_xxxlarge">90dp</dimen>
     <dimen name="spacing_xxxxlarge">120dp</dimen>
-    <dimen name="recycleview_item_margin">2dp</dimen>
+    <dimen name="recycleview_item_margin">1dp</dimen>
 
 
     <!-- spacing multiplier -->
