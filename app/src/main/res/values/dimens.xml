@@ -35,7 +35,7 @@
     <dimen name="appbar_elevation">4dp</dimen>
 
     <!-- Translations -->
-    <dimen name="fab_translation_z">6dp</dimen>
+    <dimen name="fab_translation_z">12dp</dimen>
 
     <!-- ui component -->
     <dimen name="fab_width_height">56dp</dimen>

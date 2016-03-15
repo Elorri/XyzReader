@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.app.ShareCompat;
@@ -26,7 +27,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.android.volley.VolleyError;
@@ -97,7 +97,7 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
             ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
-            ImageButton shareFab = (ImageButton) mRootView.findViewById(R.id.share_fab);
+            FloatingActionButton shareFab = (FloatingActionButton) mRootView.findViewById(R.id.share_fab);
             shareFab.setVisibility(View.VISIBLE);
             shareFab.setOnClickListener(new View.OnClickListener() {
                 @Override
