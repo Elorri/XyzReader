@@ -3,7 +3,6 @@ package com.elorri.android.xyzreader.ui;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
@@ -31,7 +30,6 @@ public class DynamicHeightGradientTopImageView extends FrameLayout {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        Log.e("Xyzreader", Thread.currentThread().getStackTrace()[2]+"");
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         int measuredWidth = getMeasuredWidth();
         int measuredHeight=(int) (measuredWidth / mAspectRatio);

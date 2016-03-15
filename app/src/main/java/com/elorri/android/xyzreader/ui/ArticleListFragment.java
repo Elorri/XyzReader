@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Rect;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -101,14 +102,18 @@ public class ArticleListFragment extends Fragment implements LoaderManager.Loade
                 public void onClick(View view) {
                     Intent intent = new Intent(Intent.ACTION_VIEW,
                             ItemsContract.Items.buildItemUri(getItemId(viewHolder.getAdapterPosition())));
-                    final Bundle bundle = ActivityOptions.makeSceneTransitionAnimation(
-                            getActivity(),
-                            view,
-                            getResources().getString(R.string.keep))
-                            .toBundle();
-                    getActivity().startActivity(
-                            intent,
-                            bundle);
+                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                         final Bundle bundle = ActivityOptions.makeSceneTransitionAnimation(
+                                 getActivity(),
+                                 view,
+                                 getResources().getString(R.string.keep))
+                                 .toBundle();
+                        getActivity().startActivity(
+                                intent,
+                                bundle);
+                    } else {
+                        getActivity().startActivity(intent);
+                    }
                 }
             });
             return viewHolder;
@@ -133,7 +138,7 @@ public class ArticleListFragment extends Fragment implements LoaderManager.Loade
 
         @Override
         public int getItemCount() {
-            if ( null == mCursor ) return 0;
+            if (null == mCursor) return 0;
             return mCursor.getCount();
         }
 
@@ -160,7 +165,7 @@ public class ArticleListFragment extends Fragment implements LoaderManager.Loade
         private int margin;
 
         public MarginDecoration(Context context) {
-            margin = context.getResources().getDimensionPixelSize(R.dimen.recycleview_item_margin);
+            margin = context.getResources().getDimensionPixelSize(R.dimen.spacing_micro);
         }
 
         @Override

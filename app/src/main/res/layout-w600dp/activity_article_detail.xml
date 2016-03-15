@@ -10,19 +10,20 @@
     <android.support.v4.widget.Space
         android:id="@+id/space"
         android:layout_width="0dp"
-        android:layout_height="25dp"/>
+        android:layout_height="@dimen/space_widget_height"/>
 
     <View android:layout_width="match_parent"
           android:layout_height="?attr/actionBarSize"
           android:layout_below="@id/space"
-          android:background="@color/primary"/>
+          android:background="@color/primary"    />
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        />
 
     <FrameLayout
         android:id="@+id/detail_fragment_container"

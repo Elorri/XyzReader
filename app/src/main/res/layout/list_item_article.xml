@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:clickable="true"
     android:focusable="true"
-    android:padding="@dimen/spacing_xsmall"
+    android:padding="@dimen/spacing_xxsmall"
     tool:foreground="?selectableItemBackground">
 
     <com.elorri.android.xyzreader.ui.DynamicHeightGradientTopBottomImageView

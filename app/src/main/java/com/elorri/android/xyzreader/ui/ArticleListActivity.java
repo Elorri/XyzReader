@@ -7,7 +7,6 @@ import android.content.IntentFilter;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.widget.TextView;
 
 import com.elorri.android.xyzreader.R;
@@ -20,7 +19,6 @@ public class ArticleListActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.e("XyzReader",Thread.currentThread().getStackTrace()[2]+"");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_article_list);
 
@@ -38,7 +36,6 @@ public class ArticleListActivity extends AppCompatActivity {
     }
 
     private void refresh() {
-        Log.e("XyzReader", Thread.currentThread().getStackTrace()[2] + "");
         startService(new Intent(this, UpdaterService.class));
     }
 

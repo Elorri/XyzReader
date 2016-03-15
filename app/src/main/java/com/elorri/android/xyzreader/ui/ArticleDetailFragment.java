@@ -52,12 +52,10 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
 
 
     public ArticleDetailFragment() {
-        Log.e("XyzReader", Thread.currentThread().getStackTrace()[2] + "");
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
-        Log.e("XyzReader", Thread.currentThread().getStackTrace()[2] + "");
         super.onCreate(savedInstanceState);
         if (getResources().getBoolean(R.bool.wide_device))
             setHasOptionsMenu(true);
@@ -66,7 +64,6 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        Log.e("XyzReader", Thread.currentThread().getStackTrace()[2] + "");
         mRootView = inflater.inflate(R.layout.fragment_article_detail, container, false);
 
         mCollapsingToolbar =
@@ -114,8 +111,7 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
                     (NestedScrollView)mRootView.findViewById(R.id.nestedscrollview);
             nestedscrollview.setBackgroundColor(getResources().getColor(R.color.material_white));
         }
-        Log.e("XyzReader", Thread.currentThread().getStackTrace()[2] + "");
-        return mRootView;
+       return mRootView;
     }
 
 
@@ -148,12 +144,10 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
 
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-        Log.e("XyzReader", Thread.currentThread().getStackTrace()[2] + "");
         Bundle arguments = getArguments();
         if (arguments != null) {
             mDetailUri = arguments.getParcelable(DETAIL_URI);
             if (mDetailUri != null) {
-                Log.e("XyzReader", Thread.currentThread().getStackTrace()[2] + "");
                 long itemId = ItemsContract.Items.getItemId(mDetailUri);
                 return ArticleLoader.newInstanceForItemId(getActivity(), itemId);
             }
@@ -163,8 +157,7 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
-        Log.e("XyzReader", Thread.currentThread().getStackTrace()[2] + "");
-        if (!isAdded()) {
+       if (!isAdded()) {
             if (data != null) {
                 data.close();
             }
@@ -183,7 +176,6 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
 
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {
-        Log.e("XyzReader", Thread.currentThread().getStackTrace()[2] + "");
         bindViews();
     }
 
@@ -192,7 +184,6 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
             return;
         }
 
-        Log.e("XyzReader", Thread.currentThread().getStackTrace()[2] + "");
         TextView titleView = (TextView) mRootView.findViewById(R.id.article_title);
         TextView bylineView = (TextView) mRootView.findViewById(R.id.article_byline);
         bylineView.setMovementMethod(new LinkMovementMethod());
@@ -201,7 +192,6 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
                 .photo);
 
         if (mCursor != null) {
-            Log.e("XyzReader", Thread.currentThread().getStackTrace()[2] + "");
             mRootView.setAlpha(0);
             mRootView.setVisibility(View.VISIBLE);
             mRootView.animate().alpha(1);
@@ -224,35 +214,25 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
                         @Override
                         public void onResponse(ImageLoader.ImageContainer imageContainer, boolean b) {
                             Bitmap bitmap = imageContainer.getBitmap();
-                            Log.e("Xyzreader", Thread.currentThread().getStackTrace()[2] + "");
                             if (bitmap != null) {
                                 Palette p = Palette.generate(bitmap, 12);
                                 int mutedColor = p.getDarkMutedColor(0xFF333333);
-                                Log.e("Xyzreader", Thread.currentThread().getStackTrace()[2] + "");
                                 mPhotoView.setImage(imageContainer.getBitmap());
                                 mPhotoView.setAspectRatio(mCursor.getFloat(ArticleLoader.Query.ASPECT_RATIO));
                                 mRootView.findViewById(R.id.meta_bar).setBackgroundColor(mutedColor);
                                 mCollapsingToolbar.setContentScrimColor(mutedColor);
-
                             }
                         }
-
                         @Override
                         public void onErrorResponse(VolleyError volleyError) {
 
                         }
                     });
-
-
         } else {
-            Log.e("XyzReader", Thread.currentThread().getStackTrace()[2] + "");
             mRootView.setVisibility(View.GONE);
             titleView.setText("N/A");
             bylineView.setText("N/A");
             bodyView.setText("N/A");
         }
-
     }
-
-
 }

@@ -33,12 +33,10 @@ public class UpdaterService extends IntentService {
 
     public UpdaterService() {
         super(TAG);
-        Log.e("XyzReader", Thread.currentThread().getStackTrace()[2] + "");
     }
 
     @Override
     protected void onHandleIntent(Intent intent) {
-        Log.e("XyzReader", Thread.currentThread().getStackTrace()[2] + "");
         Time time = new Time();
 
         ConnectivityManager cm = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
