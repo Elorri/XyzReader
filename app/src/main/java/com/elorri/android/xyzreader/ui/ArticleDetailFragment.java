@@ -108,10 +108,10 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
             });
         } else {
             NestedScrollView nestedscrollview =
-                    (NestedScrollView)mRootView.findViewById(R.id.nestedscrollview);
+                    (NestedScrollView) mRootView.findViewById(R.id.nestedscrollview);
             nestedscrollview.setBackgroundColor(getResources().getColor(R.color.material_white));
         }
-       return mRootView;
+        return mRootView;
     }
 
 
@@ -157,7 +157,7 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
-       if (!isAdded()) {
+        if (!isAdded()) {
             if (data != null) {
                 data.close();
             }
@@ -218,11 +218,13 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
                                 Palette p = Palette.generate(bitmap, 12);
                                 int mutedColor = p.getDarkMutedColor(0xFF333333);
                                 mPhotoView.setImage(imageContainer.getBitmap());
-                                mPhotoView.setAspectRatio(mCursor.getFloat(ArticleLoader.Query.ASPECT_RATIO));
+                                mPhotoView.setAspectRatio(mCursor.getFloat(ArticleLoader.Query
+                                        .ASPECT_RATIO));
                                 mRootView.findViewById(R.id.meta_bar).setBackgroundColor(mutedColor);
                                 mCollapsingToolbar.setContentScrimColor(mutedColor);
                             }
                         }
+
                         @Override
                         public void onErrorResponse(VolleyError volleyError) {
 

@@ -11,6 +11,11 @@ The main goal was to redesign an app to follow the Material Design guidelines an
 ## Others
 
 Minimum Andoid Api requiered : 16
+
+## ToDo
+
+[ ] Change gray gradient to mutte or vibrant color taken deduced from photo url
+[ ] Fix title not showing up bug on detail view when photo is loaded
 	
 	
 ## License
